@@ -1,8 +1,8 @@
 h1{
-    color:rgba(255, 174, 127, 0.664);
+    color:rgba(243, 198, 198, 0.664);
     font-size: 70px;
     text-align: center;
-    background-color: rgb(194, 106, 71);
+    background-color: rgb(206, 126, 94);
     font-style: bold;
  }
 
@@ -11,5 +11,5 @@ h1{
     height: 300px;
     align-items: center;
     justify-content: center;
-    margin-left: 420px;
+    margin-left: 680px;
  }
