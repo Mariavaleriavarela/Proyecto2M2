@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="global.css">
+    <title>Proyecto 2 - Votaciones</title>
+    <style>
+        /* Estilos para las encuestas */
+        #encuestasContainer {
+            margin-top: 20px; /* Espacio entre el banner y las encuestas */
+        }
+        .pregunta {
+            margin-bottom: 10px; /* Espacio entre preguntas */
+        }
+    </style>
+</head>
+<body>
+    <img src="images/banner.png" alt="banner principal">
+    <h1>SOLUCIÓN EN PF</h1>
+
+    <!-- Contenedor de las encuestas -->
+    <div id="encuestasContainer">
+        <!-- Las encuestas se agregarán aquí mediante JavaScript -->
+    </div>
+
+    <script src="proyecto2m2.js"></script>
+    <script>
+        // Obtener el contenedor de las encuestas
+        let encuestasContainer = document.getElementById("encuestasContainer");
+
+        // Crear una función para generar las encuestas
+        function generarEncuestas() {
+            // Iterar sobre cada encuesta en el array "encuestas"
+            for (let i = 0; i < encuestas.length; i++) {
+                // Crear un elemento div para la encuesta
+                let encuestaDiv = document.createElement("div");
+                encuestaDiv.classList.add("encuesta");
+
+                // Crear un elemento h2 para el título de la encuesta
+                let tituloEncuesta = document.createElement("h2");
+                tituloEncuesta.textContent = "Encuesta #" + (i + 1);
+                encuestaDiv.appendChild(tituloEncuesta);
+
+                // Iterar sobre cada pregunta de la encuesta
+                for (let j = 0; j < encuestas[i].preguntas.length; j++) {
+                    // Obtener la pregunta y sus opciones
+                    let pregunta = encuestas[i].preguntas[j].pregunta;
+                    let opciones = encuestas[i].preguntas[j].opciones;
+
+                    // Crear un elemento div para la pregunta
+                    let preguntaDiv = document.createElement("div");
+                    preguntaDiv.classList.add("pregunta");
+
+                    // Crear un elemento p para mostrar la pregunta
+                    let preguntaParrafo = document.createElement("p");
+                    preguntaParrafo.textContent = pregunta;
+                    preguntaDiv.appendChild(preguntaParrafo);
+
+                    // Iterar sobre cada opción y agregarla como un elemento de lista
+                    for (let k = 0; k < opciones.length; k++) {
+                        let opcionItem = document.createElement("li");
+                        opcionItem.textContent = opciones[k];
+                        preguntaDiv.appendChild(opcionItem);
+                    }
+
+                    // Agregar la pregunta al div de la encuesta
+                    encuestaDiv.appendChild(preguntaDiv);
+                }
+
+                // Agregar la encuesta completa al contenedor de las encuestas
+                encuestasContainer.appendChild(encuestaDiv);
+            }
+        }
+
+        // Llamar a la función para generar las encuestas
+        generarEncuestas();
+    </script>
+</body>
+</html>
+
+
+
