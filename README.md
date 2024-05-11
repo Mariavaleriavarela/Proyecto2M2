@@ -3,7 +3,6 @@
 # Proyecto2M2 sistema de Votación en JavaScript
 Hola!! Bienvenidos a este proyecto 2 que tiene como objetivo desarrollar un programa en JavaScript que permita a los usuarios crear encuestas, votar y ver los resultados aplicando comandos en terminal. Este programa se podrá ejecutar en el navegador, para visualizarse a través de la consola, enlazado a un archivo HTML.
 
-A continuación, se detallan los pasos a seguir para comprenderlo:
 
 ## EJERCICIO:
 El objetivo principal de este proyecto es construir un programa en JavaScript que fortalezca las siguientes habilidades y conocimientos:
@@ -15,8 +14,11 @@ El objetivo principal de este proyecto es construir un programa en JavaScript qu
 - Uso de funciones, funciones de flecha y funciones anónimas.
 - Implementación de programación orientada a objetos (POO) o programación funcional (PF).
 - Uso de Git como sistema de control de versiones y colaborar en GitHub.
+- 
 
 ![Banner Horizontal en Crema Naranja Verde estilo Orgánico Delicado](https://github.com/Mariavaleriavarela/Proyecto2M2/assets/162743143/bf1fc960-32a0-4574-8415-676dae876199)
+
+A continuación, se detallan los pasos a seguir para comprenderlo:
 
 ### 1. PASO A PASO:
 - Paso 1: Lo primero que tenemos que hacer es crear la primera funcion que permita al usuario crear la encuesta:
@@ -87,6 +89,11 @@ Esta función toma la encuesta creada y las respuestas de votos ingresada por lo
   ```
 Esta función muestra los resultados de la encuesta, incluyendo el número de votos recibidos para cada opción de respuesta de cada pregunta. Utiliza un bucle "forEach" para recorrer cada pregunta de la encuesta y mostrar los detalles de las opciones y los votos correspondientes.
 
+### 1. Imágenes del proyecto:
+
+![imagen proyecto](https://github.com/Mariavaleriavarela/Proyecto2M2/assets/162743143/dcb09542-2c9d-446d-9456-c7d36a30fe45)
+
+![consola](https://github.com/Mariavaleriavarela/Proyecto2M2/assets/162743143/271c863a-4a6e-421e-8e4e-b5e23293fc9e)
 
   
   
