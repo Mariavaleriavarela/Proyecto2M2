@@ -15,3 +15,9 @@ El objetivo principal de este proyecto es construir un programa en JavaScript qu
 - Uso de funciones, funciones de flecha y funciones anónimas.
 - Implementación de programación orientada a objetos (POO) o programación funcional (PF).
 - Uso de Git como sistema de control de versiones y colaborar en GitHub.
+
+![Banner Horizontal en Crema Naranja Verde estilo Orgánico Delicado](https://github.com/Mariavaleriavarela/Proyecto2M2/assets/162743143/bf1fc960-32a0-4574-8415-676dae876199)
+
+### 1. PASO A PASO:
+- 1: Declaración de arreglos y objeto para almacenar encuestas y votos:
+  Lo primero que tenemos que hacer es declarar
