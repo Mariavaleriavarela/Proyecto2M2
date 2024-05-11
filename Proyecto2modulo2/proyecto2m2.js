@@ -1,54 +1,49 @@
-// Objeto para almacenar encuestas y votos
-let encuestas = [];
-
 // Función para crear una nueva encuesta
 function crearEncuesta() {
-    let nuevaEncuesta = {
-        preguntas: []
-    };
+    let encuesta = [];
+    let preguntaCount = 0;
 
-    for (let i = 0; i < 8; i++) {
-        let pregunta = prompt("Ingrese la pregunta " + (i + 1) + ":");
-        let opcion1 = prompt("Ingrese la opción 1:");
-        let opcion2 = prompt("Ingrese la opción 2:");
+    while (preguntaCount < 8) {
+        const pregunta = prompt("Ingrese la pregunta " + (preguntaCount + 1) + ":");
+        const opcion1 = prompt("Ingrese la opción 1:");
+        const opcion2 = prompt("Ingrese la opción 2:");
 
-        nuevaEncuesta.preguntas.push({
-            pregunta: pregunta,
-            opciones: [opcion1, opcion2],
-            votos: [0, 0] // Inicializar votos en 0 para cada opción
-        });
+        if (pregunta && opcion1 && opcion2) {
+            encuesta.push({
+                pregunta: pregunta,
+                opciones: [opcion1, opcion2],
+                votos: [0, 0] // Inicializar votos en 0 para cada opción
+            });
+            preguntaCount++;
+        } else {
+            alert("Por favor, complete todas las preguntas y opciones de respuesta.");
+        }
     }
 
-    encuestas.push(nuevaEncuesta);
+    return encuesta;
 }
 
 // Función para votar en una encuesta
-function votarEncuesta(encuestaIndex) {
-    let encuesta = encuestas[encuestaIndex];
-
-    encuesta.preguntas.forEach((pregunta, index) => {
-        console.log("Pregunta #" + (index + 1) + ": " + pregunta.pregunta); // Mostrar la pregunta y las opciones
-        pregunta.opciones.forEach((opcion, i) => {
-            console.log((i + 1) + ". " + opcion); // Mostrar las opciones
-        });
-
-        const voto = prompt("Ingrese el número de la opción que prefiera (1 o 2) para la pregunta: '" + pregunta.pregunta + "'"); // Pedir el voto
-
+function votarEncuesta(encuesta, votoRespuestas) {
+    return encuesta.map((pregunta, index) => {
+        const voto = votoRespuestas[index];
         if (voto === "1" || voto === "2") {
-            console.log("¡Gracias por votar!");
-            pregunta.votos[parseInt(voto) - 1]++;
+            return {
+                ...pregunta,
+                votos: pregunta.votos.map((votoCount, i) => {
+                    return i === parseInt(voto) - 1 ? votoCount + 1 : votoCount;
+                })
+            };
         } else {
-            console.log("Voto inválido. Por favor, ingrese 1 o 2.");
+            return pregunta;
         }
     });
 }
 
 // Función para mostrar los resultados de una encuesta
-function mostrarResultadosEncuesta(encuestaIndex) {
-    let encuesta = encuestas[encuestaIndex];
-
+function mostrarResultadosEncuesta(encuesta) {
     console.log("Resultados de la encuesta:");
-    encuesta.preguntas.forEach((pregunta, index) => {
+    encuesta.forEach((pregunta, index) => {
         console.log("Pregunta #" + (index + 1) + ": " + pregunta.pregunta);
         pregunta.opciones.forEach((opcion, i) => {
             console.log("  Opción " + (i + 1) + " (" + opcion + "): " + pregunta.votos[i] + " votos");
@@ -57,13 +52,16 @@ function mostrarResultadosEncuesta(encuestaIndex) {
 }
 
 // Crear una nueva encuesta
-crearEncuesta();
+const encuesta = crearEncuesta();
 
-// Votar en la primera encuesta
-votarEncuesta(0);
+// Votar en la encuesta
+const votoRespuestas = encuesta.map(pregunta => {
+    return prompt("Ingrese el número de la opción que prefiera (1 o 2) para la pregunta: '" + pregunta.pregunta + "'");
+});
+const encuestaConVotos = votarEncuesta(encuesta, votoRespuestas);
 
-// Mostrar resultados de la primera encuesta
-mostrarResultadosEncuesta(0);
+// Mostrar resultados de la encuesta
+mostrarResultadosEncuesta(encuestaConVotos);
 
 
 
