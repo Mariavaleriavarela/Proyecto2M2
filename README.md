@@ -14,86 +14,122 @@ El objetivo principal de este proyecto es construir un programa en JavaScript qu
 - Uso de funciones, funciones de flecha y funciones anónimas.
 - Implementación de programación orientada a objetos (POO) o programación funcional (PF).
 - Uso de Git como sistema de control de versiones y colaborar en GitHub.
-- 
+
 
 ![Banner Horizontal en Crema Naranja Verde estilo Orgánico Delicado](https://github.com/Mariavaleriavarela/Proyecto2M2/assets/162743143/bf1fc960-32a0-4574-8415-676dae876199)
 
+
+Trabajo en una marca de calzado, y me entusiasma la idea de diseñar encuestas relacionadas con marcas, modelos, tallas, colores y otros aspectos relevantes de los zapatos."
+
 A continuación, se detallan los pasos a seguir para comprenderlo:
 
-### 1. PASO A PASO:
-- Paso 1: Lo primero que tenemos que hacer es crear la primera funcion que permita al usuario crear la encuesta:
+## 1. PASO A PASO:
+### Paso 1: Lo primero que hice fue crear la funcion que permita al usuario crear la encuesta:
 
   ```scss
-  function crearEncuesta() {
-    let encuesta = [];
-    let preguntaCount = 0;
-
-    while (preguntaCount < 8) {
-        const pregunta = prompt("Ingrese la pregunta " + (preguntaCount + 1) + ":");
-        const opcion1 = prompt("Ingrese la opción 1:");
-        const opcion2 = prompt("Ingrese la opción 2:");
-
-        if (pregunta && opcion1 && opcion2) {
-            encuesta.push({
-                pregunta: pregunta,
-                opciones: [opcion1, opcion2],
-                votos: [0, 0] // Inicializar votos en 0 para cada opción
-            });
-            preguntaCount++;
-        } else {
-            alert("Por favor, complete todas las preguntas y opciones de respuesta.");
+  function crearEncuestaZapatos() {
+    
+    for (let i = 0; i < 8; i++) {
+        let preguntaEncuesta = {
+            pregunta:"",
+            opcion1: "",
+            opcion2: ""
+            }
+        preguntaEncuesta.pregunta = prompt("Ingrese la pregunta número:"+ (i + 1) + "sobre zapatos")
+        preguntaEncuesta.opcion1= prompt("Ingresa opcion 1");
+        preguntaEncuesta.opcion2= prompt("Ingresa opcion 2");
+    
+        encuestasZapatos.push (preguntaEncuesta)
         }
-    }
-
-    return encuesta;
-    }
+                }
   ```
-Esta función permite al usuario crear una nueva encuesta ingresando preguntas y opciones de respuesta para cada una. Utiliza un bucle while para asegurarse de que se ingresen al menos 8 preguntas con sus respectivas opciones de respuesta antes de crear la encuesta. Si alguna pregunta u opción de respuesta no se completa, se muestra una alerta y se solicita nuevamente.
+
+- Se declara una función llamada crearEncuestaZapatos().
+- Dentro de la función, se inicia un bucle for que se ejecutará 8 veces, ya que nos pidieron crear al menos 8 preguntas para la encuesta.
+- En cada iteración del bucle, se crea un objeto llamado preguntaEncuesta, que contiene tres propiedades: pregunta, opcion1 y opcion2.
+- Se solicita al usuario que ingrese la pregunta sobre zapatos usando el método prompt() y se guarda en la propiedad pregunta del objeto preguntaEncuesta.
+- Se solicita al usuario que ingrese dos opciones de respuesta para la pregunta, las cuales se guardan en las propiedades opcion1 y opcion2 respectivamente.
+- Una vez que se han ingresado la pregunta y las opciones de respuesta, el objeto preguntaEncuesta se agrega al array encuestasZapatos utilizando el método push().
+- La función termina después de que se completan las 8 iteraciones del bucle y se han creado todas las preguntas para la encuesta.
+  
+En resumen, esta función permite al usuario crear una encuesta sobre zapatos mediante la entrada de preguntas y opciones de respuesta, y luego almacena estas encuestas en un array llamado encuestasZapatos.
 
   
--  Paso 2: lo segundo que Tenemos que hacer es crear la función que permita al usuario votar:
+### Paso 2: Creé una función que permite que el usuario pueda votar:
 
 ```scss
-  function votarEncuesta(encuesta, votoRespuestas) {
-    return encuesta.map((pregunta, index) => {
-        const voto = votoRespuestas[index];
-        if (voto === "1" || voto === "2") {
-            return {
-                ...pregunta,
-                votos: pregunta.votos.map((votoCount, i) => {
-                    return i === parseInt(voto) - 1 ? votoCount + 1 : votoCount;
-                })
-            };
-        } else {
-            return pregunta;
-        }
-    });
+function votarEncuestaZapatos(encuesta) {
+    // Mostrar la pregunta de la encuesta
+    for (let i = 0; i < (encuestasZapatos.length); i++) {
+    console.log(encuestasZapatos[i].pregunta);
+
+    // Mostrar las opciones disponibles
+    console.log("1. " + encuestasZapatos[i].opcion1);
+    console.log("2. " + encuestasZapatos[i].opcion2);
+
+    // Pedir al usuario que ingrese su voto
+    const voto = prompt("Ingrese el número de la opción que prefiera (1 o 2):");
+
+    // Verificar si el voto es válido
+    if (voto === "1" || voto === "2") {
+        console.log("¡Gracias por votar!");
+        encuestasZapatos[i].votoElegido = encuestasZapatos[i]["opcion"+voto]
+    } else {
+        console.log("Voto inválido. Por favor, ingrese 1 o 2.");
+    }
+  }
 }
   ```
-Esta función toma la encuesta creada y las respuestas de votos ingresada por los usuarios. Utiliza el método "map" para iterar sobre cada pregunta de la encuesta y actualizar los votos correspondientes según las respuestas de voto recibidas.
+
+- Dentro de la función, hay un bucle for que recorre todas las encuestas almacenadas en la variable encuestasZapatos. Este bucle itera desde i = 0 hasta i < encuestasZapatos.length, lo que significa que se recorrerán todas las encuestas una por una.
+
+- Dentro del bucle, primero se muestra la pregunta de la encuesta actual utilizando console.log(encuestasZapatos[i].pregunta). Esto imprimirá en la consola la pregunta de la encuesta actual.
+
+- Luego, se muestran las opciones disponibles para esa pregunta utilizando console.log("1. " + encuestasZapatos[i].opcion1) y console.log("2. " + encuestasZapatos[i].opcion2). Estas líneas mostrarán las dos opciones de respuesta disponibles para la pregunta actual.
+
+- Después, se solicita al usuario que ingrese su voto mediante const voto = prompt("Ingrese el número de la opción que prefiera (1 o 2):"). El valor ingresado por el usuario se almacenará en la variable voto.
+
+- Se verifica si el voto ingresado es válido. Si el voto es "1" o "2", se imprime "¡Gracias por votar!" y se asigna la opción elegida a la propiedad votoElegido de la encuesta actual. Esto se hace con la línea encuestasZapatos[i].votoElegido = encuestasZapatos[i]["opcion"+voto].
+
+- Si el voto no es válido (no es "1" ni "2"), se imprime "Voto inválido. Por favor, ingrese 1 o 2.".
+
+ En resumen, esta función permite a los usuarios votar en todas las encuestas almacenadas en encuestasZapatos, mostrando cada pregunta y sus opciones de respuesta, y registrando el voto del usuario en la encuesta correspondiente.
 
 
--  Paso 3: lo tercero que Tenemos que hacer es crear la función que permita mostrar los resultados:
+##  Paso 3:Creé una función para mostrar los resultados:
 
 ```scss
-  function mostrarResultadosEncuesta(encuesta) {
-    console.log("Resultados de la encuesta:");
-    encuesta.forEach((pregunta, index) => {
-        console.log("Pregunta #" + (index + 1) + ": " + pregunta.pregunta);
-        pregunta.opciones.forEach((opcion, i) => {
-            console.log("  Opción " + (i + 1) + " (" + opcion + "): " + pregunta.votos[i] + " votos");
-        });
+function mostrarResultadosEncuesta(){
+
+    encuestasZapatos.forEach(zapato => { console.log (`Resultado pregunta ${zapato.pregunta}: ${zapato.votoElegido}`)
+        
     });
 }
 
   ```
-Esta función muestra los resultados de la encuesta, incluyendo el número de votos recibidos para cada opción de respuesta de cada pregunta. Utiliza un bucle "forEach" para recorrer cada pregunta de la encuesta y mostrar los detalles de las opciones y los votos correspondientes.
+Esta función muestra los resultados de las encuestas. Utilice el método forEach para recorrer todas las encuestas en encuestasZapatos y muestrar la pregunta junto con la opción elegida por cada votante.
 
-### 1. Imágenes del proyecto:
+##  Paso 4: Creé una función que guarda los resultados:
 
-![imagen proyecto](https://github.com/Mariavaleriavarela/Proyecto2M2/assets/162743143/dcb09542-2c9d-446d-9456-c7d36a30fe45)
+```scss
+function guardarResultados(){
+    encuestaGuardada = encuestasZapatos.map(zapato =>{ 
+      return {pregunta: zapato.pregunta, votoElegido: zapato.votoElegido}
 
-![consola](https://github.com/Mariavaleriavarela/Proyecto2M2/assets/162743143/271c863a-4a6e-421e-8e4e-b5e23293fc9e)
 
-  
-  
+    } )
+
+
+}
+let encuestaGuardada = []
+
+  ```
+Esta función guarda los resultados de las encuestas en una nueva variable llamada encuestaGuardada. utilice el método map para transformar cada encuesta en un objeto que contiene la pregunta y la opción elegida, y luego asignar este objeto a encuestaGuardada.
+
+Finalmente llame a la funcion "crearEncuestaZapatos() para iniciar el proceso de creación de encuestas.
+
+```scss 
+  crearEncuestaZapatos();
+ ```
+
+
