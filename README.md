@@ -96,7 +96,7 @@ function votarEncuestaZapatos(encuesta) {
  En resumen, esta función permite a los usuarios votar en todas las encuestas almacenadas en encuestasZapatos, mostrando cada pregunta y sus opciones de respuesta, y registrando el voto del usuario en la encuesta correspondiente.
 
 
-##  Paso 3:Creé una función para mostrar los resultados:
+##  Paso 3: Creé una función para mostrar los resultados:
 
 ```scss
 function mostrarResultadosEncuesta(){
