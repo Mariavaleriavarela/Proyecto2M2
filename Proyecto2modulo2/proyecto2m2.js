@@ -1,67 +1,74 @@
-// Función para crear una nueva encuesta
-function crearEncuesta() {
-    let encuesta = [];
-    let preguntaCount = 0;
+// Función para crear una nueva encuesta sobre Marcas de Zapatos
+let encuestasZapatos = [
+    //   {
+    //     pregunta:"Marca favorita",
+    //     opcion1: "Urco",
+    //     opcion2: "Adidas"
+    //     },
+    //     {
+    //         pregunta:"modelo favorito",
+    //         opcion1: "kansas",
+    //         opcion2: "duna"
+    //         }
 
-    while (preguntaCount < 8) {
-        const pregunta = prompt("Ingrese la pregunta " + (preguntaCount + 1) + ":");
-        const opcion1 = prompt("Ingrese la opción 1:");
-        const opcion2 = prompt("Ingrese la opción 2:");
+];
 
-        if (pregunta && opcion1 && opcion2) {
-            encuesta.push({
-                pregunta: pregunta,
-                opciones: [opcion1, opcion2],
-                votos: [0, 0] // Inicializar votos en 0 para cada opción
-            });
-            preguntaCount++;
-        } else {
-            alert("Por favor, complete todas las preguntas y opciones de respuesta.");
+function crearEncuestaZapatos() {
+    
+    for (let i = 0; i < 8; i++) {
+        let preguntaEncuesta = {
+            pregunta:"",
+            opcion1: "",
+            opcion2: ""
+            }
+        preguntaEncuesta.pregunta = prompt("Ingrese la pregunta número:"+ (i + 1) + "sobre zapatos")
+        preguntaEncuesta.opcion1= prompt("Ingresa opcion 1");
+        preguntaEncuesta.opcion2= prompt("Ingresa opcion 2");
+    
+        encuestasZapatos.push (preguntaEncuesta)
         }
+}
+function votarEncuestaZapatos(encuesta) {
+    // Mostrar la pregunta de la encuesta
+    for (let i = 0; i < (encuestasZapatos.length); i++) {
+    console.log(encuestasZapatos[i].pregunta);
+
+    // Mostrar las opciones disponibles
+    console.log("1. " + encuestasZapatos[i].opcion1);
+    console.log("2. " + encuestasZapatos[i].opcion2);
+
+    // Pedir al usuario que ingrese su voto
+    const voto = prompt("Ingrese el número de la opción que prefiera (1 o 2):");
+
+    // Verificar si el voto es válido
+    if (voto === "1" || voto === "2") {
+        console.log("¡Gracias por votar!");
+        encuestasZapatos[i].votoElegido = encuestasZapatos[i]["opcion"+voto]
+    } else {
+        console.log("Voto inválido. Por favor, ingrese 1 o 2.");
     }
-
-    return encuesta;
+  }
 }
 
-// Función para votar en una encuesta
-function votarEncuesta(encuesta, votoRespuestas) {
-    return encuesta.map((pregunta, index) => {
-        const voto = votoRespuestas[index];
-        if (voto === "1" || voto === "2") {
-            return {
-                ...pregunta,
-                votos: pregunta.votos.map((votoCount, i) => {
-                    return i === parseInt(voto) - 1 ? votoCount + 1 : votoCount;
-                })
-            };
-        } else {
-            return pregunta;
-        }
+function mostrarResultadosEncuesta(){
+
+    encuestasZapatos.forEach(zapato => { console.log (`Resultado pregunta ${zapato.pregunta}: ${zapato.votoElegido}`)
+        
     });
 }
 
-// Función para mostrar los resultados de una encuesta
-function mostrarResultadosEncuesta(encuesta) {
-    console.log("Resultados de la encuesta:");
-    encuesta.forEach((pregunta, index) => {
-        console.log("Pregunta #" + (index + 1) + ": " + pregunta.pregunta);
-        pregunta.opciones.forEach((opcion, i) => {
-            console.log("  Opción " + (i + 1) + " (" + opcion + "): " + pregunta.votos[i] + " votos");
-        });
-    });
+function guardarResultados(){
+    encuestaGuardada = encuestasZapatos.map(zapato =>{ 
+      return {pregunta: zapato.pregunta, votoElegido: zapato.votoElegido}
+
+
+    } )
+
+
 }
+let encuestaGuardada = []
 
-// Crear una nueva encuesta
-const encuesta = crearEncuesta();
-
-// Votar en la encuesta
-const votoRespuestas = encuesta.map(pregunta => {
-    return prompt("Ingrese el número de la opción que prefiera (1 o 2) para la pregunta: '" + pregunta.pregunta + "'");
-});
-const encuestaConVotos = votarEncuesta(encuesta, votoRespuestas);
-
-// Mostrar resultados de la encuesta
-mostrarResultadosEncuesta(encuestaConVotos);
+crearEncuestaZapatos();
 
 
 
