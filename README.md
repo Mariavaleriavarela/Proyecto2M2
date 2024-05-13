@@ -19,7 +19,7 @@ El objetivo principal de este proyecto es construir un programa en JavaScript qu
 ![Banner Horizontal en Crema Naranja Verde estilo Orgánico Delicado](https://github.com/Mariavaleriavarela/Proyecto2M2/assets/162743143/bf1fc960-32a0-4574-8415-676dae876199)
 
 
-Trabajo en una marca de calzado, y me entusiasma la idea de diseñar encuestas relacionadas con marcas, modelos, tallas, colores y otros aspectos relevantes de los zapatos."
+Trabajo en una marca de calzado, y me entusiasma la idea de diseñar encuestas relacionadas con marcas, modelos, tallas, colores y otros aspectos relevantes de los zapatos.
 
 A continuación, se detallan los pasos a seguir para comprenderlo:
 
