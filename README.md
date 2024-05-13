@@ -131,8 +131,8 @@ Finalmente llame a la funcion "crearEncuestaZapatos() para iniciar el proceso de
 ```scss 
   crearEncuestaZapatos();
  ```
-![Banner Horizontal en Crema Naranja Verde estilo Orgánico Delicado]
+![Banner Horizontal en Crema Naranja Verde estilo Orgánico Delicado](https://github.com/Mariavaleriavarela/Proyecto2M2/assets/162743143/dd69bb49-d92c-426e-aa38-196b3c9d047e)
 
-(https://github.com/Mariavaleriavarela/Proyecto2M2/assets/162743143/415d5ae6-c06c-4ffc-8049-17a6749e276b)
+
 
 
